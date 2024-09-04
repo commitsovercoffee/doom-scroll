@@ -1,4 +1,6 @@
 <script>
+	export let data;
+
 	// Function to generate a pastel or light hex color
 	function getPastelColor() {
 		// Generate a random value for each color component
