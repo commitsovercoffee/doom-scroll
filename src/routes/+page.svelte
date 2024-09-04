@@ -75,6 +75,11 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Doom Scroll - By CommitsOverCoffee</title>
+	<meta name="description" content="Transitioning app for recovering doom scrollers." />
+</svelte:head>
+
 <svelte:window on:scroll={handleScroll} />
 <Toaster />
 
