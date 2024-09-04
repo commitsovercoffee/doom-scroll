@@ -1,8 +1,27 @@
 <script>
+	import { onMount } from 'svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
 
 	export let data;
-	let messages = data.toasts;
+	let scrollY = 0;
+
+	/**
+	 * @type {string[]}
+	 * @description Array of toast messages to be displayed.
+	 */
+	let messages = [];
+
+	/**
+	 * @type {string[]}
+	 * @description Array of colors for each post.
+	 */
+	let colors = [];
+
+	/**
+	 * @type {boolean[]}
+	 * @description Array of boolean values indicating whether a post has been liked or not.
+	 */
+	let likes = [];
 
 	// Function to generate a pastel or light hex color
 	function getPastelColor() {
@@ -25,9 +44,12 @@
 		return color;
 	}
 
-	// Create an array of 1000 random colors
-	const colors = Array.from({ length: 1000 }, () => getPastelColor());
-	let likes = Array.from({ length: 1000 }, () => false);
+	onMount(() => {
+		scrollY = 0;
+		messages = data.toasts;
+		colors = Array.from({ length: 1000 }, () => getPastelColor());
+		likes = Array.from({ length: 1000 }, () => false);
+	});
 
 	let visibleIndex = -1;
 	let lastLoggedIndex = 0; // Keep track of the last logged index
@@ -48,6 +70,12 @@
 		return index;
 	}
 
+	/**
+	 * Send a toast message based on the given index.
+	 *
+	 * @param {number} index - A positive number representing the index of the post.
+	 * @throws {Error} Will throw an error if index is not a positive number.
+	 */
 	function logMessageForPost(index) {
 		// Check if the current index is a multiple of 20
 		if (index % 20 === 0) {
@@ -59,8 +87,7 @@
 				// Log the message only if it is different from the last logged index
 				if (index !== lastLoggedIndex) {
 					toast(messages[messageIndex], {
-						duration: 5000,
-						position: 'bottom-center'
+						duration: 5000
 					});
 					lastLoggedIndex = index; // Update the last logged index
 				}
@@ -80,7 +107,13 @@
 	<meta name="description" content="Transitioning app for recovering doom scrollers." />
 </svelte:head>
 
-<svelte:window on:scroll={handleScroll} />
+<p id="credits" class="p-2 m-2 my-8 text-center align-middle text-gray-400 text-sm">
+	© 2022
+	<a class="text-gray-800" href="https://github.com/commitsovercoffee/doom-scroll">doom-scroll</a>
+	· Built by <a class="text-gray-800" href="https://commitsovercoffee.com">commitsovercoffee</a>
+</p>
+
+<svelte:window on:scroll={handleScroll} bind:scrollY />
 <Toaster />
 
 <div class="flex flex-col items-center m-2 p-2 gap-8">
@@ -122,8 +155,7 @@
 						// Copy the text inside the text field
 						navigator.clipboard.writeText('doom-scroll.commitsovercoffee.com');
 						toast.success('Text Copied!', {
-							duration: 2000,
-							position: 'bottom-center'
+							duration: 2000
 						});
 					}}
 					xmlns="http://www.w3.org/2000/svg"
