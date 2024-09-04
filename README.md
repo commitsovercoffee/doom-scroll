@@ -1,38 +1,13 @@
-# create-svelte
+# Doom Scroll
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Doom scrolling is often more of a habit than anything else. This app is an experiment designed to test this idea. Instead of falling into the trap of endless, mind-numbing scrolling, try this app. It offers a unique take on your scrolling habits.
 
-## Creating a project
+## Why This App?
 
-If you're seeing this, you've probably already done this step. Congrats!
+Because let's face it, you'll likely forget most of what you read or see online anyway. Instead of spending time on potentially distressing content, why not scroll through these empty posts?
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Features
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Endless Scrolling Experience: Mimics the endless scrolling habit but with a more mindful approach.
+- Colored Posts: Browse through a series of soothing posts designed to gently ease your mood, encouraging a calming scrolling experience.
+- Occasional Wisdom: Receive thoughtful insights occasionally to add a positive touch to your experience.
